@@ -1,0 +1,125 @@
+:root{
+    --PrimaryColor:hsl(94, 59%,35%);
+    --HoverColor: #bdf094;
+    --paleGreen: hsl(96, 75% , 89%);
+    --whiteColor : hsl(0, 0%, 100%);
+    --blackColor : hsl(0, 0%, 18%);
+    --textColor : hsl(240, 1%, 48%);
+    --bgColor : hsl(220, 10%, 94%);
+    --greyText : rgb(190, 190, 190);
+    --inputColor : hsl(330, 12%, 97%);
+    --itemCardColor:hsl(120, 5%, 88%);
+    --itemCardHover:hsl(120, 27%, 87%);
+    
+
+
+    --biggestFontSize: 2.5rem;
+    --h1FontSize: 1.5rem;
+    --h2FontSize: 1.25rem;
+    --h3FontSize: 1rem;
+    --normalFontSize: .938rem;
+    --smallFontSize: .813rem;
+    --samllestFontSize: .75rem;
+}
+
+.container {
+    position: relative;
+    width: 95vw;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bgColor);
+    overflow: hidden;
+    border-radius:  1rem;
+    box-shadow: 2px 2px 8px var(--greyText);
+}
+
+.mainContent{
+    width: 82%;
+    height: 100%;
+    padding: 2rem;
+    overflow: auto;
+
+    .bottom{
+        margin-top: 5rem;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+}
+
+.ProductSection{
+    flex-basis: 70%;
+    .heading{
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    h2{
+        font-weight: var(--h2FontSize);
+        color: var(--blackColor);
+        font-weight: 500;
+        }
+
+       .btn{
+        border: 1px solid transparent;
+        font-weight: 500;
+
+      }
+      .btn:hover{
+        border: 1px solid var(--PrimaryColor);
+
+      }
+
+
+      .tableSection{
+        width: 100%;
+        margin: 1rem 0;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid var(--HoverColor);
+
+            th, td{
+                text-align: center;
+                padding: 8px;
+              /* word-break: break-all;*/
+              
+                
+              }  
+             
+              
+         /*   tr:nth-child(even){
+                background: var(--HovepprColor);
+            }*/
+
+            p, h3{
+                justify-content: center;
+                font-weight: var(--h3FontSize);
+                color: var(--blackColor);
+                font-weight: 700;
+
+            }
+
+            .buttons{
+
+                .btn{
+                    padding: .8rem 1.5rem;
+                    border: 1px solid transparent;
+                    color: var(--blackColor);
+                    background: none;
+                  
+                }
+                
+
+            }
+          
+        }
+      }
+}
+

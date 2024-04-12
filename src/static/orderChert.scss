@@ -1,0 +1,20 @@
+.secContainer{
+    width: 100%;
+    margin: 1rem 0;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .item {
+        position: relative;
+        width: 140px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+    border-radius: 10px;
+    background: var(--itemCardColor);
+
+    }
+}
