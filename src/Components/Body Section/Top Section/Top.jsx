@@ -18,7 +18,7 @@ import img2 from'../../../Assets/img.jpg'
 const Top = () => {
   const [ordersCount, setOrdersCount] = useState('');
 
-  useEffect(() => {
+ /* useEffect(() => {
     fetch('http://localhost:4000/Orders/countorder')
       .then(response => {
         if (!response.ok) {
@@ -34,6 +34,7 @@ const Top = () => {
         // Handle error state here if needed
       });
   }, []); // Empty dependency array ensures useEffect runs only once, similar to componentDidMount
+  */
   return (
     <div className='topSection'>
       <div className="headerSection flex">

@@ -9,7 +9,7 @@ const CategoryTotalPrice = () => {
 
     const fetchData = async (type) => {
         try {
-            const response = await axios.get(`http://localhost:4000/Orders/totalpriceinCategory?type=${type}`);
+            const response = await axios.get(`http://localhost:4000/static/totalpriceinCategory?type=${type}`);
             console.log(response.data); // Log response data structure for debugging
     
             const data = response.data.totalPricesByCategory;

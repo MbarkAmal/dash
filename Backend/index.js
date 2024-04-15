@@ -16,10 +16,12 @@ app.get('/',(req,res)=> {
 const productRouter = require ('./routes/product.router')
 const userRouter = require ('./routes/user.router')
 const orderRouter = require ('./routes/order.router')
+const staticRouter = require ('./routes/static.router')
 
 app.use('/Products', productRouter )
 app.use('/User',userRouter)
 app.use('/Orders',orderRouter)
+app.use('/static',staticRouter)
 // connect to db 
 
 mongoose.connect(process.env.CONNECTION_STRING ,

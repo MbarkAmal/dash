@@ -18,6 +18,7 @@ import img2 from '../../../Assets/img.jpg'
 import ProductService from '../../../serices/ProductServices';
 import { Link } from 'react-router-dom'
 import { getUser } from '../../../redux/userSlice'
+import { GiMetalScales } from 'react-icons/gi'
 
 
 
@@ -25,16 +26,23 @@ const Listing = () => {
 
   const [products , setProducts] = useState([]);
   const [users , setUsers] = useState([]);
+  const [orders , setOrders] =useState ([]);
+  const [sales , setSales] = useState(0);
 
   useEffect(() => {
-    getProducts();
-    getUsers();
+   getProducts();
+   getUsers();
+    getSales();
+    getOrders();
   }, []);
-    // Fetch products from backend when component mounts
+
     const getProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/Products/getAllProducts`) ; // Make GET request to backend endpoint
-        setProducts(response.data); // Set products state with data from response
+        const response = await axios.get(`http://localhost:4000/static/countproductsdeliveredfortoday`) ; 
+        console.log('Response:', response.data); 
+        if (response.data.length >0){
+          setProducts(response.data[0].totalProducts);
+        }
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -42,12 +50,39 @@ const Listing = () => {
 
     const getUsers = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/User/getAllUser`) ; // Make GET request to backend endpoint
-        setUsers(response.data); // Set products state with data from response
-      } catch (error) {
-        console.error('Error fetching products:', error);
+        const response = await axios.get(`http://localhost:4000/static/countconsumercreatedfortoday`) ; 
+        console.log('Response:', response.data); 
+        if(response.data.length >0){
+        setUsers(response.data[0].count); 
+        }
+      }catch(err){
+        console.error('error fetching number of nex conumer for today' , err)
       }
     };
+
+
+
+    const getSales = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/static/counttotalpricefortoday');
+        console.log('Response:', response.data); // Log the response data for debugging
+        if (response.data.length > 0) {
+          setSales(response.data[0].total);
+        }    
+        }catch(error) {
+        console.error('error fetching totale sales for today ')
+      }
+    };
+
+    const getOrders = async() => {
+      try {
+        const response = await axios.get('http://localhost:4000/static/countorderdeliveredfortoday');
+        console.log('response' , response.data);
+        setOrders(response.data.count);
+      }catch(err) {
+        console.error('error fetching number of orders for today')
+      }
+    }
 
   return (
     <div className='listingSection'>
@@ -61,27 +96,28 @@ const Listing = () => {
 
       <div className="secContainer flex">
 
-      <div className="singleItem">
-          <AiFillHeart className='icon'/>
-          <h3> Sales : </h3>
-        </div>
+          <div className="singleItem">
+      <AiFillHeart className='icon'/>
+      <h3> Sales for Today: {sales} $</h3>
+    </div>
+
 
         <div className="singleItem">
           <MdDeliveryDining className='icon'/>
-          <h3> Orders : </h3>
+          <h3> Orders for Today: {orders} </h3>
         </div>
 
         <div className="singleItem">
           <MdProductionQuantityLimits  className='icon'/>
           <Link to={'/Product'}>
-        <h3>All Products : {products.length}</h3>
+        <h3> Products sales for Today : {products} </h3>
          </Link>
         </div>
 
        
         <div className="singleItem">
           <FaUserCheck  className='icon'/>
-          <h3>All Consumer : {users.length} </h3>
+          <h3> New Consumer : {users}  </h3>
         </div>
 
 

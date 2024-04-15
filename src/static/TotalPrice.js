@@ -9,7 +9,7 @@ const TotalPrice = () => {
 
     const fetchTotalPrice = async (type) => {
         try {
-          const response = await axios.get(`http://localhost:4000/Orders/totalPriceForWeekMonthYear?type=${type}`);
+          const response = await axios.get(`http://localhost:4000/static/totalPriceForWeekMonthYear?type=${type}`);
           console.log(response.data); // Log response data structure for debugging
           const data = response.data.totalPrice; // Assuming the total prices are under totalPrice key in the response
           const labels = [];

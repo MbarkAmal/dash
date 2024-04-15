@@ -11,7 +11,7 @@ const DeliveryRapport = () => {
         // Fetch order counts by status from the backend API
         const fetchOrderCountsByStatus = async () => {
             try {
-                const response = await fetch('http://localhost:4000/Orders/countorderbyStatus');
+                const response = await fetch('http://localhost:4000/static/countorderbyStatus');
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }

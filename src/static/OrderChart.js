@@ -24,7 +24,7 @@ const OrderChart = () => {
         // Function to fetch order data from backend API
         const fetchOrderData = async () => {
             try {
-                const response = await fetch('http://localhost:4000/Orders/countformonth');
+                const response = await fetch('http://localhost:4000/static/countformonth');
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }

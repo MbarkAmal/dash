@@ -10,7 +10,7 @@ const DeliveredProducts = () => {
   useEffect(() => {
     const fetchProductCountsByCategory = async () => {
       try {
-        const response = await fetch('http://localhost:4000/Orders/countproductssellersbyCategory');
+        const response = await fetch('http://localhost:4000/static/countproductssellersbyCategory');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }

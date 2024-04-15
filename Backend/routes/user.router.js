@@ -16,4 +16,5 @@ route.delete('/:id', userController.delete)
 
 route.put('/updateUser/:id', formidable() , userController.updateUser)
 
+
 module.exports = route 
