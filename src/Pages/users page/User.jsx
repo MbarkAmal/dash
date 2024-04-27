@@ -138,6 +138,8 @@ const User = () => {
                     <th>User Name</th>
                     <th>Email</th>
                     <th>Password</th>
+
+                    <th>Role</th>
                    <th>Created AT</th>
                     <th>ACTION</th>
                   </tr>
@@ -154,6 +156,7 @@ const User = () => {
                   <td>{user.username}</td>
                   <td>{user.email}</td>
                   <td style={{ wordBreak :'break-word' }}>{user.password}</td>
+                  <td>user</td>
                 <td>{user.createdAt}</td>
                   <td>
               <div className="buttons flex">

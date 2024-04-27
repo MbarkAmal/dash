@@ -13,26 +13,23 @@ exports.createOrder = async (req, res) => {
             return res.status(404).json({ error: 'Customer not found' });
         }
 
-        // Construct the customer object to be inserted into the order
         const customerDetails = {
             _id: customer._id,
             username: customer.username,
-            photo_user: customer.photo_user // Assuming you have photo_user field in your User schema
+            photo_user: customer.photo_user,
+             
         };
 
-        // Fetch product details and perform validations
         const productsData = await Promise.all(products.map(async productItem => {
             const product = await Product.findById(productItem.productId);
             if (!product) {
                 throw new Error(`Product with ID ${productItem.productId} not found`);
             }
 
-            // Check if enough stock is available for each product
             if (product.stock < productItem.quantity) {
                 throw new Error(`Insufficient stock for product with ID ${productItem.productId}`);
             }
 
-            // Update stock for each product
             product.stock -= productItem.quantity;
             await product.save();
 
@@ -291,6 +288,34 @@ exports.getLastCustomerOrder = async (req, res) => {
 
 
 
+// get order  detail  by id + update 
+exports.getOrderDetailByID = async (req , res) => {
+  try {
+    const result = await Order.findById({_id: req.params.id});
+    res.status(200).json({ result}) ;
+
+  }catch(err) {
+    console.error("error fetchin order by id", err);
+    res.status(500).json({message :"server error"})
+  }
+}
 
 
+//update statut of order 
+exports.updateStatusOrder = async (req , res) => {
+  try {
+    const status = req.body;
+    const updateData = status ;
+    
+    const update = await Order.findByIdAndUpdate(req.params.id, updateData, {new: true});
 
+    if(!update) {
+      return res.status(404).json({success: false, message: "order not found"})
+    }
+
+    res.status(200).json({success: true, message: "status updated successufully",order: update })
+  }catch (error) {
+    console.error("Error while updating product:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+}
+}

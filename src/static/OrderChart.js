@@ -7,21 +7,16 @@ import { TbMessageCircle } from 'react-icons/tb';
 import { IoNotificationsOutline } from 'react-icons/io5';
 import img from '../../src/Assets/img.jpg';
 
-// Import the TotalPriceChart component
 import TotalPrice from './TotalPrice';
 import DeliveryRapport from './DeliveryRapport';
 
-// Define the OrderChart component
 const OrderChart = () => {
-    // State variables to store chart reference, chart instance, order data, and error
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
     const [orderData, setOrderData] = useState(null);
     const [error, setError] = useState(null);
 
-    // useEffect hook to fetch order data from backend API when the component mounts
     useEffect(() => {
-        // Function to fetch order data from backend API
         const fetchOrderData = async () => {
             try {
                 const response = await fetch('http://localhost:4000/static/countformonth');
@@ -35,7 +30,6 @@ const OrderChart = () => {
             }
         };
 
-        // Fetch order data and update state
         fetchOrderData()
             .then(data => {
                 setOrderData(data);
@@ -46,19 +40,14 @@ const OrderChart = () => {
             });
     }, []);
 
-    // useEffect hook to create or update the chart when orderData changes
     useEffect(() => {
-        // Create or update the chart when orderData is available
         if (orderData) {
-            // Destroy existing chart instance if it exists
             if (chartInstance.current) {
                 chartInstance.current.destroy();
             }
 
-            // Get context of the canvas element
             const ctx = chartRef.current.getContext('2d');
 
-            // Create new chart instance
             chartInstance.current = new Chart(ctx, {
                 type: 'pie',
                 data: {
@@ -102,7 +91,6 @@ const OrderChart = () => {
         }
     }, [orderData]);
 
-    // Return JSX for rendering the chart
     return (
         <div className="container">
             <Sidebar />

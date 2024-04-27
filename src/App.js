@@ -11,6 +11,7 @@ import OrderChart from './static/OrderChart';
 import DeliveryRapport from './static/DeliveryRapport';
 import ProductsChart from './static/ProductsChart';
 import DeliveredProducts from './static/DeliveredProducts';
+import AdminProfile from './Pages/admin page/AdminProfile';
 
 import TotalPrice from './static/TotalPrice';
 
@@ -19,6 +20,7 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/AdminProfile" element={<AdminProfile/>}/>
                 <Route path="/Product" element={<Product />} />
                 <Route path="/Product/AddProduct" element={<AddProduct />} />
                 <Route path="/Product/UpdateProduct/:id" element={<Update />} />

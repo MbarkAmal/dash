@@ -115,11 +115,10 @@ exports.countProductsdelivredForToday = async (req, res) => {
 
 exports.countOrdersForMonth = async (req, res) => {
     try {
-      // Aggregate delivered orders by the creation date and count them for all months
       const deliveredOrderCount = await Order.aggregate([
         {
           $match: {
-            status: 'delivered' // Filter orders by status 'delivered'
+            status: 'delivered' 
           }
         },
         {
@@ -133,23 +132,20 @@ exports.countOrdersForMonth = async (req, res) => {
         }
       ]);
   
-      // Send the delivered order count for all months in the response
       res.status(200).json(deliveredOrderCount);
     } catch (error) {
-      // If there's an error, return an error response
       console.error('Error counting delivered orders for all months:', error);
-      res.status(500).json({ message: 'Internal server error' });
+      res.status(500).json({ message: ' server error' });
     }
   };
 
   exports.countOrdersByStatus = async (req, res) => {
     try {
-        // Aggregate pipeline to group orders by status and count them
         const orderCounts = await Order.aggregate([
             {
                 $group: {
-                    _id: '$status', // Group by status field
-                    count: { $sum: 1 } // Count documents in each group
+                    _id: '$status', 
+                    count: { $sum: 1 } 
                 }
             }
         ]);
@@ -400,3 +396,5 @@ exports.countConsumerCreatedToday = async (req , res) => {
       res.status(500).json({message : 'server error '}) ;
   }
 }
+
+// top sellers 

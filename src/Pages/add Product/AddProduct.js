@@ -203,10 +203,10 @@ const AddProduct = () => {
           </div>
           <div className="row">
             <div className="col-25">
-              <label htmlFor="photo">Image</label>
+              <label htmlFor="photo" className="file-upload">Image</label>
             </div>
             <div className="col-75">
-              <input type="file" accept="image/*" 
+              <input id="file-upload" type="file" accept="image/*" 
               onChange={(e) => setPhoto(e.target.files[0])}  />
             </div>
           </div>

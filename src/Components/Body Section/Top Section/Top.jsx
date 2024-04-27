@@ -52,13 +52,15 @@ const Top = () => {
           <TbMessageCircle className='icon'/>
           <IoNotificationsOutline  className='icon'/>
           <div className='adminImage'>
+            <Link to={'/AdminProfile'}>
             <img src={img} alt='Admin Image'/>
+            </Link>
           </div>
     
         </div>
       </div>
 
-      <div className="cardSection flex">
+     <div className="cardSection flex">
 
         <div className="rightCard flex">
           <h1>Create and sell perfect products</h1>
@@ -113,7 +115,7 @@ const Top = () => {
         </div>
       </div>
 
-      </div>
+            </div>
     </div>
   )
 }

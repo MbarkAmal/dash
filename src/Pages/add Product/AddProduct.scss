@@ -70,13 +70,15 @@
         input, select, textarea {
             width: 80%;
             padding: 12px;
-            border: 1px solid var(--HoverColor);
+            border: 1px solid #ccc;
             border-radius: 4px;
             resize: vertical;
+
           }
        
           
           label {
+            color: var(--blackColor);
             padding: 12px 12px 12px 0;
             display: inline-block;
             font-size: var(--h3FontSize);
@@ -95,6 +97,8 @@
           input[type=submit]:hover {
             background-color: #45a049;
           }
+
+          
 
           .col-25 {
             float: left;

@@ -41,6 +41,7 @@ const getsingleUser = async (id) =>{
 }
 useEffect(() => {
   getsingleUser(id);
+  
 }, [id]);
 
     const dispatch = useDispatch()
@@ -171,10 +172,10 @@ useEffect(() => {
               </div>
               <div className="row">
             <div className="col-25">
-              <label htmlFor="photo">Image</label>
+              <label htmlFor="photo" className="file-upload"> Image</label>
             </div>
             <div className="col-75">
-              <input type="file" accept="image/*" 
+              <input id="file-upload" type="file"  accept="image/*" 
                onChange={(e) => setPhoto_user(e.target.files[0])}/>
             </div>
           </div>
@@ -195,9 +196,9 @@ useEffect(() => {
 
 </div>
 
-              <div className="buttons flex">
-                <button className="btn" type="submit">
-                  Add
+              <div className="update_btn">
+                <button className="btnUP" type="submit">
+                  Update details
                 </button>
               </div>
             </form>

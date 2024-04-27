@@ -66,7 +66,6 @@ const Update = () => {
         }
       });
   
-      // Dispatch the action only if the request is successful
       if (response.status === 200) {
         dispatch(updateProduct(response.data)); // Dispatch the updated product data if needed
         navigate('/Product');
